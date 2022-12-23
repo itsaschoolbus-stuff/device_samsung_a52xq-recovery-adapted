@@ -45,6 +45,8 @@ on fs
 
     mount vfat /dev/block/bootdevice/by-name/apnhlos /firmware ro shortname=lower,uid=0,gid=1000,dmask=227,fmask=337
 
+    start linkblobs
+
 on property:ro.build.version.security_patch=*
     setprop ro.vendor.build.security_patch ${ro.build.version.security_patch}
 
@@ -63,3 +65,10 @@ on property:ro.orangefox.boot=1
     mkdir /tmp/flashlight
     write /tmp/flashlight/max_brightness "1"
     symlink /sys/devices/virtual/camera/flash/rear_flash /tmp/flashlight/brightness
+
+service linkblobs /system/bin/linkblobs.sh
+    user root
+    group root
+    disabled
+    oneshot
+    seclabel u:r:recovery:s0
