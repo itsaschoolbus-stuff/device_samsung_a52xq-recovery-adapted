@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-DEVICE_PATH := device/samsung/a52q
+DEVICE_PATH := device/samsung/a52xq
 
 # Android Verified Boot
 BOARD_AVB_ENABLE := false
@@ -50,14 +50,13 @@ ENABLE_SCHEDBOOST := true
 TARGET_USES_UEFI := true
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := a52q
+TARGET_OTA_ASSERT_DEVICE := a52xq
 
 # Kernel: Base flags
-BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 swiotlb=1 androidboot.usbcontroller=a600000.dwc3 printk.devkmsg=on firmware_class.path=/vendor/firmware_mnt/image
+BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 androidboot.usbcontroller=a600000.dwc3 swiotlb=2048 cgroup.memory=nokmem,nosocket firmware_class.path=/vendor/firmware_mnt/image loop.max_part=7
 BOARD_BOOTIMG_HEADER_VERSION := 2
 
 # Kernel: Board (kernel...) flags
-BOARD_NAME               := SRPTH31C001
 BOARD_KERNEL_BASE        := 0x00000000
 BOARD_KERNEL_PAGESIZE    := 4096
 BOARD_RAMDISK_OFFSET     := 0x02000000
@@ -69,11 +68,10 @@ BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --pagesize $(BOARD_KERNEL_PAGESIZE)
 BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
-BOARD_MKBOOTIMG_ARGS += --board $(BOARD_NAME)
 
 # Prebuilt: Kernel
-TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/Image.gz
-BOARD_KERNEL_IMAGE_NAME := Image.gz
+TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
+BOARD_KERNEL_IMAGE_NAME := Image
 
 # Prebuilt: DTB
 TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb.img
@@ -84,11 +82,11 @@ BOARD_INCLUDE_RECOVERY_DTBO := true
 
 # Platform: Bootloader
 TARGET_NO_BOOTLOADER := true
-TARGET_BOOTLOADER_BOARD_NAME := atoll
+TARGET_BOOTLOADER_BOARD_NAME := lito
 
 # Platform: Board
-TARGET_BOARD_PLATFORM := atoll
-TARGET_BOARD_PLATFORM_GPU := qcom-adreno618
+TARGET_BOARD_PLATFORM := lito
+TARGET_BOARD_PLATFORM_GPU := qcom-adreno619
 QCOM_BOARD_PLATFORMS += $(TARGET_BOARD_PLATFORM)
 
 # Encryption: Rollback for Encryption
@@ -121,7 +119,7 @@ TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 # Partition: Size
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 81788928
 BOARD_BOOTIMAGE_PARTITION_SIZE     := 100663296
-BOARD_DTBOIMAGE_PARTITION_SIZE     := 25165824
+BOARD_DTBOIMAGE_PARTITION_SIZE     := 8388608
 
 # Recovery
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
@@ -132,8 +130,8 @@ LZMA_RAMDISK_TARGETS := recovery
 
 # Partitions
 BOARD_SUPER_PARTITION_GROUPS := main
-BOARD_SUPER_PARTITION_SIZE := 7730906700
-BOARD_MAIN_SIZE := 7730906700
+BOARD_SUPER_PARTITION_SIZE := 10013900800
+BOARD_MAIN_SIZE := 10013900800
 BOARD_MAIN_PARTITION_LIST := system odm vendor product
 
 # TWRP Configuration: Basic config
@@ -154,8 +152,8 @@ TW_INCLUDE_RESETPROP := true
 # TWRP Configuration: Brightness/CPU
 TW_CUSTOM_CPU_TEMP_PATH := /sys/class/thermal/thermal_zone17/temp
 TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel0-backlight/brightness"
-TW_MAX_BRIGHTNESS := 365
-TW_DEFAULT_BRIGHTNESS := 219
+TW_MAX_BRIGHTNESS := 486
+TW_DEFAULT_BRIGHTNESS := 100
 
 # TWRP Configuration: Logd
 TWRP_INCLUDE_LOGCAT := true
