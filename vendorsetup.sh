@@ -19,5 +19,4 @@ export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER="1"
 export FOX_USE_XZ_UTILS="1"
 export OF_FL_PATH1="/tmp/flashlight" # See /init.recovery.qcom.rc for more information
 export OF_FL_PATH2=""
-export FOX_VANILLA_BUILD="1"
 export OF_USE_LEGACY_BATTERY_SERVICES="1"
