@@ -28,3 +28,11 @@ TARGET_RECOVERY_DEVICE_MODULES += \
 
 RECOVERY_LIBRARY_SOURCE_FILES += \
     $(TARGET_OUT_SHARED_LIBRARIES)/libion.so
+
+# Fastbootd
+PRODUCT_PACKAGES += \
+    android.hardware.fastboot@1.0-impl-mock \
+    fastbootd
+
+PRODUCT_PRODUCT_PROPERTIES += \
+	ro.fastbootd.available=true
