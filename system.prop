@@ -27,3 +27,7 @@ persist.sys.disable_rescue=true
 # AVB
 ro.boot.avb_version=1.0
 ro.boot.vbmeta.avb_version=1.0
+
+# USB OTG
+persist.sys.isUsbOtgEnabled=true
+persist.sys.oem.otg_support=true

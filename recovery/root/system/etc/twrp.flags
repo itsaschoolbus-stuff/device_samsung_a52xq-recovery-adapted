@@ -29,7 +29,6 @@ odm                 /odm         erofs       ro                                 
 /metadata           ext4         /dev/block/bootdevice/by-name/metadata          flags=display="Metadata";backup=1;wipeingui
 /storage            ext4         /data/media/0                                   flags=display="Internal Storage";usermrf;backup=1;fsflags="bind";removable
 
-
 # Persist Point
 /persist            ext4         /dev/block/bootdevice/by-name/persist           flags=display="Persist";backup=1
 /persist_image      emmc         /dev/block/bootdevice/by-name/persist           flags=display="Persist Image";backup=1;flashimg=1
@@ -40,6 +39,6 @@ odm                 /odm         erofs       ro                                 
 
 # SD Card & USB-OTG Points
 /sdcard1            auto         /dev/block/mmcblk0p1  /dev/block/mmcblk0        flags=display="MicroSD";storage;wipeingui;removable
-/usb_otg            vfat         /dev/block/sdg1       /dev/block/sdg            flags=display="USB-Storage";storage;wipeingui;removable
+/usb_otg            auto         /dev/block/sdg1       /dev/block/sdg            flags=display="USB-Storage";storage;wipeingui;removable
 
 /firmware           vfat         /dev/block/bootdevice/by-name/apnhlos           flags=display="Firmware";mounttodecrypt
